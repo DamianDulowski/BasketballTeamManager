@@ -1,0 +1,8 @@
+Version 0.1
+- menu startowe
+- tworzenie nowej drużyny oraz zapisu
+- wczytywanie drużyny
+- dodanie nowego zawodnika
+- dodanie arkuszu meczowego
+- zapisywanie rekordów z meczu
+- oglądanie tabelii ze statystykami wszystkich zawodników oraz rekordami

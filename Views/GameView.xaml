@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="BasketballTeamManager.Views.GameView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BasketballTeamManager.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000" Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Opponent team: " HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox Name="OpponentName" Width="200" Height="30" Margin="20"/>
+            <Label Content="Opponent score: " HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox Name="OpponentScore" Width="50" Height="30" Margin="20"/>
+            <Label Content="Date: " HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox Name="DateBox" Width="100" Height="30" Margin="20"/>
+            <Button Content="Canel" Height="30" Width="100" Margin="20" Click="CanelClick"/>
+            <Button Content="Add Game" Height="30" Width="100" Margin="20" Click="AddGameClick"/>
+        </StackPanel>
+        <DataGrid Name="GameLog" ItemsSource="{Binding playerList}" Grid.Row="1" CanUserAddRows="True" AutoGenerateColumns="False" Margin="70" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Width="200" Binding="{Binding Name}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="MP" Width="40" Binding="{Binding MinutesPlayed}"/>
+                <DataGridTextColumn Header="FG" Width="40" Binding="{Binding FieldGoals}"/>
+                <DataGridTextColumn Header="FGA" Width="40" Binding="{Binding FieldGoalsAttempts}"/>
+                <DataGridTextColumn Header="3P" Width="40" Binding="{Binding ThreePointGoals}"/>
+                <DataGridTextColumn Header="3PA" Width="40" Binding="{Binding ThreePointGoalsAttempts}"/>
+                <DataGridTextColumn Header="FT" Width="40" Binding="{Binding FreeThrows}"/>
+                <DataGridTextColumn Header="FTA" Width="40" Binding="{Binding FreeThrowsAttempts}"/>
+                <DataGridTextColumn Header="ORB" Width="40" Binding="{Binding OffensiveRebounds}"/>
+                <DataGridTextColumn Header="TRB" Width="40" Binding="{Binding TotalRebounds}"/>
+                <DataGridTextColumn Header="AST" Width="40" Binding="{Binding Assists}"/>
+                <DataGridTextColumn Header="STL" Width="40" Binding="{Binding Steals}"/>
+                <DataGridTextColumn Header="BLK" Width="40" Binding="{Binding Blocks}"/>
+                <DataGridTextColumn Header="TOV" Width="40" Binding="{Binding Turnovers}"/>
+                <DataGridTextColumn Header="PF" Width="40" Binding="{Binding PersonalFauls}"/>
+                <DataGridTextColumn Header="PTS" Width="*" Binding="{Binding Points}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

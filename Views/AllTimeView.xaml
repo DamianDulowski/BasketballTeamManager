@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="BasketballTeamManager.Views.AllTimeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BasketballTeamManager.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="750"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DataGrid Name="FranchisePlayerTable" ItemsSource="{Binding playerList}" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False" Grid.Column="0" Grid.RowSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Player" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Pos" Binding="{Binding Position}"/>
+                <DataGridTextColumn Header="From" Binding="{Binding Country}"/>
+                <DataGridTextColumn Header="Yrs" Binding="{Binding Years}"/>
+                <DataGridTextColumn Header="G" Binding="{Binding Games}"/>
+                <DataGridTextColumn Header="MP" Binding="{Binding MinutesPlayed}"/>
+                <DataGridTextColumn Header="FG" Binding="{Binding FieldGoals}"/>
+                <DataGridTextColumn Header="FGA" Binding="{Binding FieldGoalsAttempts}"/>
+                <DataGridTextColumn Header="3P" Binding="{Binding ThreePointGoals}"/>
+                <DataGridTextColumn Header="3PA" Binding="{Binding ThreePointGoalsAttempts}"/>
+                <DataGridTextColumn Header="FT" Binding="{Binding FreeThrows}"/>
+                <DataGridTextColumn Header="FTA" Binding="{Binding FreeThrowsAttempts}"/>
+                <DataGridTextColumn Header="ORB" Binding="{Binding OffensiveRebounds}"/>
+                <DataGridTextColumn Header="TRB" Binding="{Binding TotalRebounds}"/>
+                <DataGridTextColumn Header="AST" Binding="{Binding Assists}"/>
+                <DataGridTextColumn Header="STL" Binding="{Binding Steals}"/>
+                <DataGridTextColumn Header="BLK" Binding="{Binding Blocks}"/>
+                <DataGridTextColumn Header="TOV" Binding="{Binding Turnovers}"/>
+                <DataGridTextColumn Header="PF" Binding="{Binding PersonalFauls}"/>
+                <DataGridTextColumn Header="PTS" Width="*" Binding="{Binding Points}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Column="1" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Label Width="95" Content="Totals/PerGame" Margin="0,0,5,0"/>
+                <ComboBox x:Name="TotalsPerGame" Width="100"  SelectionChanged="TotalPerGameChanged">
+                    <ComboBoxItem Content="Totals" IsSelected="True"/>
+                    <ComboBoxItem Content="PerGame"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Label Width="95" Content="Records" Margin="0,0,5,0"/>
+                <ComboBox x:Name="RecordsSelection" Width="100" SelectionChanged="RecordsSelectionChanged">
+                    <ComboBoxItem Name="pts" Content="Points" IsSelected="True"/>
+                    <ComboBoxItem Name="fg" Content="Field goals"/>
+                    <ComboBoxItem Name="fg3" Content="3pt goals"/>
+                    <ComboBoxItem Name="trb" Content="Rebounds"/>
+                    <ComboBoxItem Name="ast" Content="Assists"/>
+                    <ComboBoxItem Name="blk" Content="Blocks"/>
+                    <ComboBoxItem Name="stl" Content="Steals"/>
+                    <ComboBoxItem Name="tov" Content="Turnovers"/>
+                </ComboBox>
+            </StackPanel>
+            <DataGrid Name="Records" Height="auto">
+                <DataGrid.Resources>
+                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="{DynamicResource Background}" />
+                        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Player" Binding="{Binding name}"/>
+                    <DataGridTextColumn Header="Date" Binding="{Binding date}"/>
+                    <DataGridTextColumn Header="Pts" Width="*" Binding="{Binding score}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <Button Grid.Column="1" Grid.Row="1" Content="Back" Width="100" Height="35" Margin="0 230 0 0" Click="BackClick"/>
+    </Grid>
+</UserControl>
